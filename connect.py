@@ -24,9 +24,29 @@ import sys
 import re
 import datetime
 import time
-import paho.mqtt.publuish as publish
+import paho.mqtt.publish as publish
+import paho.mqtt.client as mqtt
+
+def on_connect(client, userdata, rc):
+print("Connected with result code " + str(rc))
+
+def on_message(client, userdata, msg):
+print ("Topic: " + msg.topic + "\nMessage: " + str(msg.payload))
 
 #get the current timestamp
 timestamp = datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S')
 payload = "{\"device_id\": 000, \"timestamp\": " + str(timestamp) + ", \"message\": test }"
+print 'publishing payload to iot.eclipse.org:1883'
+print payload
 publish.single("connectThingMQTT", payload, hostname="iot.eclipse.org")
+print '------------------------------------------------------------------'
+print 'subscribing to topic containing payload on iot.eclipse.org:1883'
+client.subscribe("connectThingMQTT")
+client = mqtt.Client()
+client.on_connect = on_connect
+client.on_message = on_message
+client.connect("iot.eclipse.org", 1883, 60)
+client.subscribe("connectThingMQTT", 0)
+client.unsubscribe("connectThingMQTT")
+client.disconnect()
+print payload
