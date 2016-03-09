@@ -41,7 +41,6 @@ print payload
 publish.single("connectThingMQTT", payload, hostname="iot.eclipse.org")
 print '------------------------------------------------------------------'
 print 'subscribing to topic containing payload on iot.eclipse.org:1883'
-client.subscribe("connectThingMQTT")
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
