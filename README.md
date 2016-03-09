@@ -8,8 +8,12 @@ git clone https://github.com/acmthinks/connectThingMQTT.git
 ~/connectThingMQTT/install.sh
 
 
+
 To run:
+
 sudo python ~/connectThingMQTT/subscribe.py
 
+
 In a seperate window: 
+
 sudo python ~/connectThingMQTT/publish.py
