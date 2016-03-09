@@ -16,7 +16,6 @@ chmod 755 connect.py
 sudo pip install RPi.GPIO
 
 # Let's validate that we can get a temp reading and light up the LED
-cd ~/Adafruit_Python_DHT/examples
 echo ""
 echo "============== Sending test message to iot.eclipse.org:1883 =============="
 echo ""
