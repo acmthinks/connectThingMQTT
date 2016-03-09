@@ -28,10 +28,10 @@ import paho.mqtt.publish as publish
 import paho.mqtt.client as mqtt
 
 def on_connect(client, userdata, rc):
-print("Connected with result code " + str(rc))
+  print("Connected with result code " + str(rc))
 
 def on_message(client, userdata, msg):
-print ("Topic: " + msg.topic + "\nMessage: " + str(msg.payload))
+  print ("Topic: " + msg.topic + "\nMessage: " + str(msg.payload))
 
 #get the current timestamp
 timestamp = datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S')
